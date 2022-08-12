@@ -1,5 +1,6 @@
 # ATWD1
-1. Place your folder inside the "htdocs"
-2. Create a database named "uwe"
-3. Run "http://localhost/rest/data.php"
-4. Run "http://localhost/rest/ClientSide.html"
+1. First, Download Xampp
+2. Second, Place your folder inside the "htdocs"
+3. Third, Create a database named "uwe"
+5. Next, Run "http://localhost/rest/data.php"
+6. Finally, Run "http://localhost/rest/ClientSide.html"
