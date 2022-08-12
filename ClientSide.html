@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+  integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+  integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
+</script>
+
+<script>
+  var request = new XMLHttpRequest();
+  var id;
+  var District_en;
+  var District_cn;
+  var Name_en;
+  var Name_cn;
+  var Address_en;
+  var Address_cn;
+  var GIHS;
+  var Court_no_en;
+  var Court_no_cn;
+  var Ancillary_facilities_en;
+  var Ancillary_facilities_cn;
+  var Opening_hours_en;
+  var Opening_hours_cn;
+  var Phone;
+  var Remarks_en;
+  var Remarks_cn;
+  var Longitude;
+  var Latitude;
+
+  function Search() {
+    var type = document.getElementById("inputtype");
+    var type1 = document.getElementById("inputtype1");
+    var data = document.getElementById("inputvalue");
+    var type = type.value;
+    var type1 = type1.value;
+    var data = data.value;
+    var url = "http://localhost/rest/index.php/Lcsd/" + type + "/" + data + "/" + type1;
+
+    request.open("GET", url, true);
+    request.onreadystatechange = SearchupdatePage;
+    request.send(null);
+  }
+
+  function Create() {
+    document.getElementById('btnclose').click();
+    var data1 = document.getElementById("ADistrict_en");
+    var data2 = document.getElementById("ADistrict_cn");
+    var data3 = document.getElementById("AName_en");
+    var data4 = document.getElementById("AName_cn");
+    var data5 = document.getElementById("AAddress_en");
+    var data6 = document.getElementById("AAddress_cn");
+    var data7 = document.getElementById("AGIHS");
+    var data8 = document.getElementById("ACourt_no_en");
+    var data9 = document.getElementById("ACourt_no_cn");
+    var data10 = document.getElementById("AAncillary_facilities_en");
+    var data11 = document.getElementById("AAncillary_facilities_cn");
+    var data12 = document.getElementById("AOpening_hours_en");
+    var data13 = document.getElementById("AOpening_hours_cn");
+    var data14 = document.getElementById("APhone");
+    var data15 = document.getElementById("ARemarks_en");
+    var data16 = document.getElementById("ARemarks_cn");
+    var data17 = document.getElementById("ALongitude");
+    var data18 = document.getElementById("ALatitude");
+
+    var data1 = data1.value;
+    var data2 = data2.value;
+    var data3 = data3.value;
+    var data4 = data4.value;
+    var data5 = data5.value;
+    var data6 = data6.value;
+    var data7 = data7.value;
+    var data8 = data8.value;
+    var data9 = data9.value;
+    var data10 = data10.value;
+    var data11 = data11.value;
+    var data12 = data12.value;
+    var data13 = data13.value;
+    var data14 = data14.value;
+    var data15 = data15.value;
+    var data16 = data16.value;
+    var data17 = data17.value;
+    var data18 = data18.value;
+
+    var url = "http://localhost/rest/index.php/Lcsd/Add/" + data1 + "/" + data2 + "/" + data3 + "/" + data4 + "/" +
+      data5 + "/" + data6 + "/" + data7 + "/" + data8 + "/" + data9 + "/" + data10 + "/" + data11 + "/" + data12 +
+      "/" + data13 + "/" + data14 + "/" + data15 + "/" + data16 + "/" + data17 + "/" + data18;
+
+    request.open("POST", url, true);
+    request.onreadystatechange = CreateupdatePage;
+    request.send(null);
+  }
+
+  function Update() {
+    document.getElementById('btnclose1').click();
+    var data1 = document.getElementById("UDistrict_en");
+    var data2 = document.getElementById("UDistrict_cn");
+    var data3 = document.getElementById("UName_en");
+    var data4 = document.getElementById("UName_cn");
+    var data5 = document.getElementById("UAddress_en");
+    var data6 = document.getElementById("UAddress_cn");
+    var data7 = document.getElementById("UGIHS");
+    var data8 = document.getElementById("UCourt_no_en");
+    var data9 = document.getElementById("UCourt_no_cn");
+    var data10 = document.getElementById("UAncillary_facilities_en");
+    var data11 = document.getElementById("UAncillary_facilities_cn");
+    var data12 = document.getElementById("UOpening_hours_en");
+    var data13 = document.getElementById("UOpening_hours_cn");
+    var data14 = document.getElementById("UPhone");
+    var data15 = document.getElementById("URemarks_en");
+    var data16 = document.getElementById("URemarks_cn");
+    var data17 = document.getElementById("ULongitude");
+    var data18 = document.getElementById("ULatitude");
+
+    var data1 = data1.value;
+    var data2 = data2.value;
+    var data3 = data3.value;
+    var data4 = data4.value;
+    var data5 = data5.value;
+    var data6 = data6.value;
+    var data7 = data7.value;
+    var data8 = data8.value;
+    var data9 = data9.value;
+    var data10 = data10.value;
+    var data11 = data11.value;
+    var data12 = data12.value;
+    var data13 = data13.value;
+    var data14 = data14.value;
+    var data15 = data15.value;
+    var data16 = data16.value;
+    var data17 = data17.value;
+    var data18 = data18.value;
+
+    var url = "http://localhost/rest/index.php/Lcsd/Updateid/" + id + "/" + data1 + "/" + data2 + "/" + data3 +
+      "/" + data4 + "/" + data5 + "/" + data6 + "/" + data7 + "/" + data8 + "/" + data9 + "/" + data10 + "/" +
+      data11 + "/" + data12 + "/" + data13 + "/" + data14 + "/" + data15 + "/" + data16 + "/" + data17 + "/" +
+      data18;
+
+    request.open("PUT", url, true);
+    request.onreadystatechange = UpdateupdatePage;
+    request.send(null);
+  }
+
+  function Delete() {
+    document.getElementById('btnModalCancel').click();
+
+    var url = "http://localhost/rest/index.php/Lcsd/Deleteid/" + id;
+
+    request.open("DELETE", url, true);
+    request.onreadystatechange = DeleteupdatePage;
+    request.send(null);
+  }
+
+  function SearchupdatePage() {
+    if (request.readyState == 4) {
+      if (request.status == 200) {
+        var serverData = request.responseText;
+        var ele = document.getElementById("displayArea");
+        //ele.innerHTML = serverData;
+
+        var dataArr = JSON.parse(serverData);
+        //console.log(dataArr);
+        var html = "<ul>";
+        if (dataArr['msg'] === "Error") {
+          html = html + "<div class='container'>";
+          html = html + "<div class='row'>";
+          html = html + "<div class='col-md-8 offset-md-2'>";
+          html = html + "<div class='form-group row>";
+          html = html + "<div class='col-md-6'>";
+          html = html + "<p style='color:red;'>";
+          html = html + "Type: " + dataArr['msg'] + "<br>" + "Error Code: " + dataArr['Code'] + "<br>" +
+            "Error Message: " + dataArr['Message'];
+          html = html + "</p>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+        } else {
+          //table name
+          html = html + "<br>";
+          html = html + "<table class='table table-striped'>";
+          html = html + "<thead>";
+          html = html + "<tr>";
+          html = html + "<th>" + "id";
+          html = html + "<th>" + "District";
+          html = html + "<br>" + "_en";
+          html = html + "<th>" + "District";
+          html = html + "<br>" + "_cn";
+          html = html + "<th>" + "Name";
+          html = html + "<br>" + "_en";
+          html = html + "<th>" + "Name_";
+          html = html + "<br>" + "_cn";
+          html = html + "<th>" + "Address";
+          html = html + "<br>" + "_en";
+          html = html + "<th>" + "Address";
+          html = html + "<br>" + "_cn";
+          html = html + "<th>" + "GIHS";
+          html = html + "<th>" + "Court";
+          html = html + "<br>" + "_no_en";
+          html = html + "<th>" + "Court";
+          html = html + "<br>" + "_no_cn";
+          html = html + "<th>" + "Ancillary";
+          html = html + "<br>" + "_facilities_en";
+          html = html + "<th>" + "Ancillary";
+          html = html + "<br>" + "_facilities_cn";
+          html = html + "<th>" + "Opening";
+          html = html + "<br>" + "_hours_en";
+          html = html + "<th>" + "Opening";
+          html = html + "<br>" + "_hours_cn";
+          html = html + "<th>" + "Phone";
+          html = html + "<th>" + "Remarks";
+          html = html + "<br>" + "_en";
+          html = html + "<th>" + "Remarks";
+          html = html + "<br>" + "_cn";
+          html = html + "<th>" + "Longitude";
+          html = html + "<th>" + "Latitude";
+          html = html + "<th>" + "Delete";
+          html = html + "<th>" + "Update";
+          html = html + "</tr>";
+          html = html + "</thead>";
+          for (var i = 0; i < dataArr.length; i++) {
+            //table value
+            html = html + "<tbody>";
+            html = html + "<tr>";
+            html = html + "<td>" + dataArr[i]['id'];
+            html = html + "<td>" + dataArr[i]['District_en'];
+            html = html + "<td>" + dataArr[i]['District_cn'];
+            html = html + "<td>" + dataArr[i]['Name_en'];
+            html = html + "<td>" + dataArr[i]['Name_cn'];
+            html = html + "<td>" + dataArr[i]['Address_en'];
+            html = html + "<td>" + dataArr[i]['Address_cn'];
+            html = html + "<td>" + dataArr[i]["GIHS"];
+            html = html + "<td>" + dataArr[i]['Court_no_en'];
+            html = html + "<td>" + dataArr[i]['Court_no_cn'];
+            html = html + "<td>" + dataArr[i]['Ancillary_facilities_en'];
+            html = html + "<td>" + dataArr[i]['Ancillary_facilities_cn'];
+            html = html + "<td>" + dataArr[i]['Opening_hours_en'];
+            html = html + "<td>" + dataArr[i]['Opening_hours_cn'];
+            html = html + "<td>" + dataArr[i]['Phone'];
+            html = html + "<td>" + dataArr[i]['Remarks_en'];
+            html = html + "<td>" + dataArr[i]['Remarks_cn'];
+            html = html + "<td>" + dataArr[i]['Longitude'];
+            html = html + "<td>" + dataArr[i]['Latitude'];
+
+            id = dataArr[i]["id"];
+            District_en = dataArr[i]['District_en'];
+            District_cn = dataArr[i]['District_cn'];
+            Name_en = dataArr[i]['Name_en'];
+            Name_cn = dataArr[i]['Name_cn'];
+            Address_en = dataArr[i]['Address_en'];
+            Address_cn = dataArr[i]['Address_cn'];
+            GIHS = dataArr[i]["GIHS"];
+            Court_no_en = dataArr[i]['Court_no_en'];
+            Court_no_cn = dataArr[i]['Court_no_cn'];
+            Ancillary_facilities_en = dataArr[i]['Ancillary_facilities_en'];
+            Ancillary_facilities_cn = dataArr[i]['Ancillary_facilities_cn'];
+            Opening_hours_en = dataArr[i]['Opening_hours_en'];
+            Opening_hours_cn = dataArr[i]['Opening_hours_cn'];
+            Phone = dataArr[i]['Phone'];
+            Remarks_en = dataArr[i]['Remarks_en'];
+            Remarks_cn = dataArr[i]['Remarks_cn'];
+            Longitude = dataArr[i]['Longitude'];
+            Latitude = dataArr[i]['Latitude'];
+
+            document.getElementById("UDistrict_en").value = District_en;
+            document.getElementById("UDistrict_cn").value = District_cn;
+            document.getElementById("UName_en").value = Name_en;
+            document.getElementById("UName_cn").value = Name_cn;
+            document.getElementById("UAddress_en").value = Address_en;
+            document.getElementById("UAddress_cn").value = Address_cn;
+            document.getElementById("UGIHS").value = GIHS;
+            document.getElementById("UCourt_no_en").value = Court_no_en;
+            document.getElementById("UCourt_no_cn").value = Court_no_cn;
+            document.getElementById("UAncillary_facilities_en").value = Ancillary_facilities_en;
+            document.getElementById("UAncillary_facilities_cn").value = Ancillary_facilities_cn;
+            document.getElementById("UOpening_hours_en").value = Opening_hours_en;
+            document.getElementById("UOpening_hours_cn").value = Opening_hours_en;
+            document.getElementById("UPhone").value = Phone;
+            document.getElementById("URemarks_en").value = Remarks_en;
+            document.getElementById("URemarks_cn").value = Remarks_cn;
+            document.getElementById("ULongitude").value = Longitude;
+            document.getElementById("ULatitude").value = Latitude;
+
+
+            document.getElementById("DDistrict_en").value = District_en;
+            document.getElementById("DDistrict_cn").value = District_cn;
+            document.getElementById("DName_en").value = Name_en;
+            document.getElementById("DName_cn").value = Name_cn;
+            document.getElementById("DAddress_en").value = Address_en;
+            document.getElementById("UAddress_cn").value = Address_cn;
+            document.getElementById("DGIHS").value = GIHS;
+            document.getElementById("DCourt_no_en").value = Court_no_en;
+            document.getElementById("DCourt_no_cn").value = Court_no_cn;
+            document.getElementById("DAncillary_facilities_en").value = Ancillary_facilities_en;
+            document.getElementById("DAncillary_facilities_cn").value = Ancillary_facilities_cn;
+            document.getElementById("DOpening_hours_en").value = Opening_hours_en;
+            document.getElementById("DOpening_hours_cn").value = Opening_hours_en;
+            document.getElementById("DPhone").value = Phone;
+            document.getElementById("DRemarks_en").value = Remarks_en;
+            document.getElementById("DRemarks_cn").value = Remarks_cn;
+            document.getElementById("DLongitude").value = Longitude;
+            document.getElementById("DLatitude").value = Latitude;
+
+            html = html + "<td>" +
+              "<button data-bs-toggle='modal' data-bs-target='#DeleteModal' class='btn btn-danger'>Delete</button>";
+            html = html + "<td>" +
+              "<button onclick='Alert.render()' data-bs-toggle='modal' data-bs-target='#confirmUpdateModal' class='btn btn-warning'>Update</button>";
+            html = html + "</tr>";
+            html = html + "</tbody>";
+          }
+        }
+        ele.innerHTML = html;
+      }
+    }
+  }
+
+  function CreateupdatePage() {
+    if (request.readyState == 4) {
+      if (request.status == 200) {
+        var serverData = request.responseText;
+        var ele = document.getElementById("displayArea");
+        //ele.innerHTML = serverData;
+
+        var dataArr = JSON.parse(serverData);
+        //console.log(dataArr);
+        var html = "<ul>";
+        if (dataArr['msg'] === "Error") {
+          html = html + "<div class='container'>";
+          html = html + "<div class='row'>";
+          html = html + "<div class='col-md-8 offset-md-2'>";
+          html = html + "<div class='form-group row>";
+          html = html + "<div class='col-md-6'>";
+          html = html + "<p style='color:red;'>";
+          html = html + "Type: " + dataArr['msg'] + "<br>" + "Error Code: " + dataArr['Code'] + "<br>" +
+            "Error Message: " + dataArr['Message'];
+          html = html + "</p>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+        } else {
+          html = html + "<div class='container'>";
+          html = html + "<div class='row'>";
+          html = html + "<div class='col-md-8 offset-md-2'>";
+          html = html + "<div class='form-group row>";
+          html = html + "<div class='col-md-6'>";
+          html = html + "<p style='color:green;'>";
+          html = html + dataArr['msg'];
+          html = html + "</p>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+        }
+        ele.innerHTML = html;
+      }
+    }
+  }
+
+  function DeleteupdatePage() {
+    if (request.readyState == 4) {
+      if (request.status == 200) {
+        var serverData = request.responseText;
+        var ele = document.getElementById("displayArea");
+        //ele.innerHTML = serverData;
+
+        var dataArr = JSON.parse(serverData);
+        //console.log(dataArr);
+        var html = "<ul>";
+        if (dataArr['msg'] === "Error") {
+          html = html + "<div class='container'>";
+          html = html + "<div class='row'>";
+          html = html + "<div class='col-md-8 offset-md-2'>";
+          html = html + "<div class='form-group row>";
+          html = html + "<div class='col-md-6'>";
+          html = html + "<p style='color:red;'>";
+          html = html + "Type: " + dataArr['msg'] + "<br>" + "Error Code: " + dataArr['Code'] + "<br>" +
+            "Error Message: " + dataArr['Message'];
+          html = html + "</p>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+        } else {
+          html = html + "<div class='container'>";
+          html = html + "<div class='row'>";
+          html = html + "<div class='col-md-8 offset-md-2'>";
+          html = html + "<div class='form-group row>";
+          html = html + "<div class='col-md-6'>";
+          html = html + "<p style='color:green;'>";
+          html = html + dataArr['msg'];
+          html = html + "</p>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+        }
+        ele.innerHTML = html;
+      }
+    }
+  }
+
+  function UpdateupdatePage() {
+    if (request.readyState == 4) {
+      if (request.status == 200) {
+        var serverData = request.responseText;
+        var ele = document.getElementById("displayArea");
+        ele.innerHTML = serverData;
+
+        var dataArr = JSON.parse(serverData);
+        //console.log(dataArr);
+        var html = "<ul>";
+        if (dataArr['msg'] === "Error") {
+          html = html + "<div class='container'>";
+          html = html + "<div class='row'>";
+          html = html + "<div class='col-md-8 offset-md-2'>";
+          html = html + "<div class='form-group row>";
+          html = html + "<div class='col-md-6'>";
+          html = html + "<p style='color:red;'>";
+          html = html + "Type: " + dataArr['msg'] + "<br>" + "Error Code: " + dataArr['Code'] + "<br>" +
+            "Error Message: " + dataArr['Message'];
+          html = html + "</p>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+        } else {
+          html = html + "<div class='container'>";
+          html = html + "<div class='row'>";
+          html = html + "<div class='col-md-8 offset-md-2'>";
+          html = html + "<div class='form-group row>";
+          html = html + "<div class='col-md-6'>";
+          html = html + "<p style='color:green;'>";
+          html = html + dataArr['msg'];
+          html = html + "</p>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+          html = html + "</div>";
+        }
+        ele.innerHTML = html;
+      }
+    }
+  }
+</script>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">ATWD CourseWork</a>
+  </nav>
+  <div id="popUpOverlay1"></div>
+  <div class="modal fade" id="DeleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="DeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="DeleteModalLabel">Delete information</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete it?
+          <br><br>
+          <div class="form-group row">
+            <div class="col-md-6">
+              District_en: <input type=text name="" class="form-control" id="DDistrict_en" readonly>
+            </div>
+            <div class="col-md-6">
+              District_cn: <input type=text name="" class="form-control" id="DDistrict_cn" readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Name_en: <input type=text name="" class="form-control" id="DName_en" readonly>
+            </div>
+            <div class="col-md-6">
+              Name_cn: <input type=text name="" class="form-control" id="DName_cn" readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Address_en: <input type=text name="" class="form-control" id="DAddress_en" readonly>
+            </div>
+            <div class="col-md-6">
+              Address_cn: <input type=text name="" class="form-control" id="DAddress_cn" readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              GIHS: <input type=text name="" class="form-control" id="DGIHS" readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Court_no_en: <input type=text name="" class="form-control" id="DCourt_no_en" readonly>
+            </div>
+            <div class="col-md-6">
+              Court_no_cn: <input type=text name="" class="form-control" id="DCourt_no_cn" readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Ancillary_facilities_en: <input type=text name="" class="form-control" id="DAncillary_facilities_en"
+                readonly>
+            </div>
+            <div class="col-md-6">
+              Ancillary_facilities_cn: <input type=text name="" class="form-control" id="DAncillary_facilities_cn"
+                readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Opening_hours_en: <input type=text name="" class="form-control" id="DOpening_hours_en" readonly>
+            </div>
+            <div class="col-md-6">
+              Opening_hours_cn: <input type=text name="" class="form-control" id="DOpening_hours_cn" readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Phone: <input type=text name="" class="form-control" id="DPhone" readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Remarks_en: <input type=text name="" class="form-control" id="DRemarks_en" readonly>
+            </div>
+            <div class="col-md-6">
+              Remarks_cn: <input type=text name="" class="form-control" id="DRemarks_cn" readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Longitude: <input type=text name="" class="form-control" id="DLongitude" readonly>
+            </div>
+            <div class="col-md-6">
+              Latitude: <input type=text name="" class="form-control" id="DLatitude" readonly>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnModalCancel">Cancel</button>
+          <button onclick="Delete()" class="btn btn-danger">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="popUpOverlay1"></div>
+  <div class="modal fade" id="AddModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="AddModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="AddModalLabel">Add information</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group row">
+            <div class="col-md-6">
+              District_en: <input type=text name="" class="form-control" id="ADistrict_en">
+            </div>
+            <div class="col-md-6">
+              District_cn: <input type=text name="" class="form-control" id="ADistrict_cn">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Name_en: <input type=text name="" class="form-control" id="AName_en">
+            </div>
+            <div class="col-md-6">
+              Name_cn: <input type=text name="" class="form-control" id="AName_cn">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Address_en: <input type=text name="" class="form-control" id="AAddress_en">
+            </div>
+            <div class="col-md-6">
+              Address_cn: <input type=text name="" class="form-control" id="AAddress_cn">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              GIHS: <input type=text name="" class="form-control" id="AGIHS">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Court_no_en: <input type=text name="" class="form-control" id="ACourt_no_en">
+            </div>
+            <div class="col-md-6">
+              Court_no_cn: <input type=text name="" class="form-control" id="ACourt_no_cn">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Ancillary_facilities_en: <input type=text name="" class="form-control" id="AAncillary_facilities_en">
+            </div>
+            <div class="col-md-6">
+              Ancillary_facilities_cn: <input type=text name="" class="form-control" id="AAncillary_facilities_cn">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Opening_hours_en: <input type=text name="" class="form-control" id="AOpening_hours_en">
+            </div>
+            <div class="col-md-6">
+              Opening_hours_cn: <input type=text name="" class="form-control" id="AOpening_hours_cn">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Phone: <input type=text name="" class="form-control" id="APhone">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Remarks_en: <input type=text name="" class="form-control" id="ARemarks_en">
+            </div>
+            <div class="col-md-6">
+              Remarks_cn: <input type=text name="" class="form-control" id="ARemarks_cn">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Longitude: <input type=text name="" class="form-control" id="ALongitude">
+            </div>
+            <div class="col-md-6">
+              Latitude: <input type=text name="" class="form-control" id="ALatitude">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal" id="btnclose">Cancel</button>
+          <button onclick="Create()" class='btn btn-outline-success'>Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="popUpOverlay"></div>
+  <div class="modal fade" id="confirmUpdateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="confirmUpdateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmUpdateModalLabel">Update information</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group row">
+            <div class="col-md-6">
+              District_en: <input type=text name="" class="form-control" id="UDistrict_en">
+            </div>
+            <div class="col-md-6">
+              District_cn: <input type=text name="" class="form-control" id="UDistrict_cn">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Name_en: <input type=text name="" class="form-control" id="UName_en">
+            </div>
+            <div class="col-md-6">
+              Name_cn: <input type=text name="" class="form-control" id="UName_cn">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Address_en: <input type=text name="" class="form-control" id="UAddress_en">
+            </div>
+            <div class="col-md-6">
+              Address_cn: <input type=text name="" class="form-control" id="UAddress_cn">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              GIHS: <input type=text name="" class="form-control" id="UGIHS">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Court_no_en: <input type=text name="" class="form-control" id="UCourt_no_en">
+            </div>
+            <div class="col-md-6">
+              Court_no_cn: <input type=text name="" class="form-control" id="UCourt_no_cn">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Ancillary_facilities_en: <input type=text name="" class="form-control" id="UAncillary_facilities_en">
+            </div>
+            <div class="col-md-6">
+              Ancillary_facilities_cn: <input type=text name="" class="form-control" id="UAncillary_facilities_cn">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Opening_hours_en: <input type=text name="" class="form-control" id="UOpening_hours_en">
+            </div>
+            <div class="col-md-6">
+              Opening_hours_cn: <input type=text name="" class="form-control" id="UOpening_hours_cn">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Phone: <input type=text name="" class="form-control" id="UPhone">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Remarks_en: <input type=text name="" class="form-control" id="URemarks_en">
+            </div>
+            <div class="col-md-6">
+              Remarks_cn: <input type=text name="" class="form-control" id="URemarks_cn">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              Longitude: <input type=text name="" class="form-control" id="ULongitude">
+            </div>
+            <div class="col-md-6">
+              Latitude: <input type=text name="" class="form-control" id="ULatitude">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal" id="btnclose1">Cancel</button>
+          <button onclick="Update()" class="btn btn-outline-success">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section style="padding-top:300px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <div class="card"> <button data-bs-toggle="modal" data-bs-target="#AddModal"
+              class="btn btn-outline-primary">Add</button>
+            <div class="card-header">
+              Searching
+            </div>
+            <div class="card-body">
+              <div class="form-group row">
+                <div class="col-md-6">
+                  Searching :
+                  <select name="" class="form-control" id="inputtype">
+                    <option value="">Choose One</option>
+                    <option value="All">All data</option>
+                    <option value="District_en">District_en</option>
+                    <option value="District_cn">District_cn</option>
+                    <option value="Name_en">Name_en</option>
+                    <option value="Name_cn">Name_cn</option>
+                    <option value="Address_en">Address_en</option>
+                    <option value="Address_cn">Address_cn</option>
+                    <option value="GIHS">GIHS</option>
+                    <option value="Court_no_en">Court_no_en</option>
+                    <option value="Court_no_cn">Court_no_cn</option>
+                    <option value="Ancillary_facilities_en">Ancillary_facilities_en</option>
+                    <option value="Ancillary_facilities_cn">Ancillary_facilities_cn</option>
+                    <option value="Opening_hours_en">Opening_hours_en</option>
+                    <option value="Opening_hours_cn">Opening_hours_cn</option>
+                    <option value="Remarks_en">Remarks_en</option>
+                    <option value="Remarks_cn">Remarks_cn</option>
+                    <option value="Longitude">Longitude</option>
+                    <option value="Latitude">Latitude</option>
+                  </select>
+
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-4">
+                  Input the value:<input type=text name="" class="form-control" id="inputvalue">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-4">
+                  Order By:
+              <select name="" class="form-control" id="inputtype1">
+                <option value="">Choose One</option>
+                <option value="ASC">Ascending</option>
+                <option value="DESC">Descending</option>
+              </select>
+
+                </div>
+              </div>
+              <button onclick="Search()" class="btn btn-outline-info">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div id="displayArea"></div>
+
+</body>
+
+</html>
